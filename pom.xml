@@ -4,15 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.coderman</groupId>
     <artifactId>zhihu</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
 
     <parent>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <groupId>org.springframework.boot</groupId>
-        <version>2.2.4.RELEASE</version>
+        <artifactId>base-parent</artifactId>
+        <groupId>com.coderman</groupId>
+        <version>1.0.0</version>
     </parent>
 
     <modules>
@@ -22,7 +21,6 @@
     </modules>
 
     <properties>
-        <base.version>1.0.0</base.version>
         <zhihu.version>1.0.0</zhihu.version>
         <jwt.version>0.9.1</jwt.version>
         <easy.captcha.version>1.6.2</easy.captcha.version>
@@ -43,12 +41,7 @@
             </dependency>
             <dependency>
                 <groupId>com.coderman</groupId>
-                <artifactId>base-api</artifactId>
-                <version>${base.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.coderman</groupId>
-                <artifactId>base-service</artifactId>
+                <artifactId>zhihu-service</artifactId>
                 <version>${base.version}</version>
             </dependency>
 

@@ -6,8 +6,10 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
 @EqualsAndHashCode(callSuper = true)
+@Accessors(chain = true)
 @Data
 @ApiModel(value="UserFollowModel", description = "")
 public class UserFollowModel extends BaseModel {

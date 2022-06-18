@@ -1,14 +1,7 @@
 package com.coderman.zhihu;
 
-import com.coderman.api.constant.CommonConstant;
-import com.coderman.service.aspect.ResultAspect;
-import org.mybatis.spring.annotation.MapperScan;
+import com.coderman.service.anntation.ISpringBootApplication;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.annotation.FilterType;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @author coderman
@@ -16,11 +9,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @Description: TOD
  * @date 2022/5/2720:57
  */
-@SpringBootApplication
-@ComponentScan(basePackages = {CommonConstant.BASE_PACKAGE}, excludeFilters = {@ComponentScan.Filter(value = {ResultAspect.class}, type = FilterType.ASSIGNABLE_TYPE)})
-@MapperScan(basePackages = {CommonConstant.BASE_DAO_PACKAGE})
-@EnableAspectJAutoProxy
-@EnableTransactionManagement
+@ISpringBootApplication
 public class ZhihuApplication {
 
     public static void main(String[] args) {

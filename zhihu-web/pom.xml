@@ -15,6 +15,7 @@
         <dependency>
             <groupId>com.coderman</groupId>
             <artifactId>zhihu-service</artifactId>
+            <version>${zhihu.version}</version>
         </dependency>
     </dependencies>
 
@@ -23,31 +24,6 @@
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.3.7</version>
-                <executions>
-                    <execution>
-                        <id>Generate MyBatis Files</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <phase>deploy</phase>
-                    </execution>
-                </executions>
-                <configuration>
-                    <!-- 输出详细信息 -->
-                    <verbose>true</verbose>
-                    <!-- 覆盖生成文件 -->
-                    <overwrite>true</overwrite>
-                    <!-- 定义配置文件 -->
-                    <configurationFile>${basedir}/src/main/resources/mybatis-generator.xml</configurationFile>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.coderman</groupId>
-                        <artifactId>base-mybatis</artifactId>
-                        <version>1.0.0</version>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>

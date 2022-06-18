@@ -1,33 +1,33 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.coderman.zhihu.dao.user.UserFollowDAO" >
-  <resultMap id="BaseResultMap" type="com.coderman.zhihu.model.user.UserFollowModel" >
-    <id column="user_follow_id" property="userFollowId" jdbcType="INTEGER" />
-    <result column="follow_status" property="followStatus" jdbcType="BIT" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="target_id" property="targetId" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.coderman.zhihu.dao.user.UserFollowDAO">
+  <resultMap id="BaseResultMap" type="com.coderman.zhihu.model.user.UserFollowModel">
+    <id column="user_follow_id" jdbcType="INTEGER" property="userFollowId" />
+    <result column="follow_status" jdbcType="BIT" property="followStatus" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="target_id" jdbcType="INTEGER" property="targetId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -38,25 +38,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -67,40 +67,40 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     user_follow_id, follow_status, user_id, target_id, create_time, update_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.coderman.zhihu.model.user.UserFollowExample" >
+  <select id="selectByExample" parameterType="com.coderman.zhihu.model.user.UserFollowExample" resultMap="BaseResultMap">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
     from zhihu_user_follow
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from zhihu_user_follow
     where user_follow_id = #{userFollowId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from zhihu_user_follow
     where user_follow_id = #{userFollowId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.coderman.zhihu.model.user.UserFollowExample" >
+  <delete id="deleteByExample" parameterType="com.coderman.zhihu.model.user.UserFollowExample">
     delete from zhihu_user_follow
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.coderman.zhihu.model.user.UserFollowModel" >
+  <insert id="insert" parameterType="com.coderman.zhihu.model.user.UserFollowModel">
     insert into zhihu_user_follow (user_follow_id, follow_status, user_id, 
       target_id, create_time, update_time
       )
@@ -108,82 +108,82 @@
       #{targetId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.coderman.zhihu.model.user.UserFollowModel" >
+  <insert id="insertSelective" parameterType="com.coderman.zhihu.model.user.UserFollowModel">
     insert into zhihu_user_follow
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="userFollowId != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userFollowId != null">
         user_follow_id,
       </if>
-      <if test="followStatus != null" >
+      <if test="followStatus != null">
         follow_status,
       </if>
-      <if test="userId != null" >
+      <if test="userId != null">
         user_id,
       </if>
-      <if test="targetId != null" >
+      <if test="targetId != null">
         target_id,
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         create_time,
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="userFollowId != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userFollowId != null">
         #{userFollowId,jdbcType=INTEGER},
       </if>
-      <if test="followStatus != null" >
+      <if test="followStatus != null">
         #{followStatus,jdbcType=BIT},
       </if>
-      <if test="userId != null" >
+      <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="targetId != null" >
+      <if test="targetId != null">
         #{targetId,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.coderman.zhihu.model.user.UserFollowExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.coderman.zhihu.model.user.UserFollowExample" resultType="java.lang.Long">
     select count(*) from zhihu_user_follow
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective" parameterType="map">
     update zhihu_user_follow
-    <set >
-      <if test="record.userFollowId != null" >
+    <set>
+      <if test="record.userFollowId != null">
         user_follow_id = #{record.userFollowId,jdbcType=INTEGER},
       </if>
-      <if test="record.followStatus != null" >
+      <if test="record.followStatus != null">
         follow_status = #{record.followStatus,jdbcType=BIT},
       </if>
-      <if test="record.userId != null" >
+      <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
-      <if test="record.targetId != null" >
+      <if test="record.targetId != null">
         target_id = #{record.targetId,jdbcType=INTEGER},
       </if>
-      <if test="record.createTime != null" >
+      <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.updateTime != null" >
+      <if test="record.updateTime != null">
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample" parameterType="map">
     update zhihu_user_follow
     set user_follow_id = #{record.userFollowId,jdbcType=INTEGER},
       follow_status = #{record.followStatus,jdbcType=BIT},
@@ -191,32 +191,32 @@
       target_id = #{record.targetId,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP}
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.coderman.zhihu.model.user.UserFollowModel" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.coderman.zhihu.model.user.UserFollowModel">
     update zhihu_user_follow
-    <set >
-      <if test="followStatus != null" >
+    <set>
+      <if test="followStatus != null">
         follow_status = #{followStatus,jdbcType=BIT},
       </if>
-      <if test="userId != null" >
+      <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="targetId != null" >
+      <if test="targetId != null">
         target_id = #{targetId,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where user_follow_id = #{userFollowId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.coderman.zhihu.model.user.UserFollowModel" >
+  <update id="updateByPrimaryKey" parameterType="com.coderman.zhihu.model.user.UserFollowModel">
     update zhihu_user_follow
     set follow_status = #{followStatus,jdbcType=BIT},
       user_id = #{userId,jdbcType=INTEGER},
